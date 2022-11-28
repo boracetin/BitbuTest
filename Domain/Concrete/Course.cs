@@ -33,9 +33,9 @@ namespace Domain.Concrete
 
         public string Pdf { get; set; }
 
-        public IEnumerable<StudentCourse>? StudentCourses { get; set; }
+        public IList<StudentCourse>? StudentCourses { get; set; }
 
-        public CourseCenter? CourseCenter { get; set; }
+        public IList<CourseCenter>? CourseCenter { get; set; }
 
 
 

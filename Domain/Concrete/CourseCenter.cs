@@ -10,13 +10,12 @@ namespace Domain.Concrete
 {
     public class CourseCenter:IEntity
     {
-        public CourseCenter(int courseCenterId, string centerName, string location, int numberOfStudent, List<Course> courses)
+        public CourseCenter(int courseCenterId, string centerName, string location, int numberOfStudent)
         {
             CourseCenterId = courseCenterId;
             CenterName = centerName;
             Location = location;
             NumberOfStudent = numberOfStudent;
-            Courses = courses;
         }
         public int CourseCenterId { get; set; }
 
@@ -26,9 +25,9 @@ namespace Domain.Concrete
 
         public int NumberOfStudent { get; set; }
 
-        public List<Course>? Courses { get; set; }
+        public IList<Course>? Courses { get; set; }
 
-        public IEnumerable<StudentCourseCenter>? StudentCourseCenters { get; set; }
+        public IList<StudentCourseCenter>? StudentCourseCenters { get; set; }
 
 
     }

@@ -29,9 +29,9 @@ namespace Domain.Concrete
         public DateTime BirthDay { get; set; }
 
 
-        public IEnumerable<StudentCourse>? StudentCourses { get; set; }
+        public IList<StudentCourse>? StudentCourses { get; set; }
 
-        public IEnumerable<StudentCourseCenter>? StudentCourseCenters { get; set; }
+        public IList<StudentCourseCenter>? StudentCourseCenters { get; set; }
 
        
     }

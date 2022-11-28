@@ -25,6 +25,7 @@ namespace DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Many to many relation between Student and Course
             modelBuilder.Entity<StudentCourse>()
                 .HasKey(t => new { t.StudentId, t.CourseId });
             modelBuilder.Entity<StudentCourse>()
@@ -36,16 +37,36 @@ namespace DataAccess
                 .WithMany(t => t.StudentCourses)
                 .HasForeignKey(t => t.CourseId);
 
+            //Many to Many relation between Student and CourseCenter
+            modelBuilder.Entity<StudentCourseCenter>()
+                .HasKey(t => new { t.StudentId, t.CourseCenterId });
+            modelBuilder.Entity<StudentCourseCenter>()
+                .HasOne(t => t.Student)
+                .WithMany(t => t.StudentCourseCenters)
+                .HasForeignKey(t => t.StudentId);
+            modelBuilder.Entity<StudentCourseCenter>()
+                .HasOne(t => t.CourseCenter)
+                .WithMany(t => t.StudentCourseCenters)
+                .HasForeignKey(t => t.CourseCenterId);
+
+            ////One to Many relation between Student and CourseCenter
             //modelBuilder.Entity<StudentCourseCenter>()
             //    .HasKey(t => new { t.StudentId, t.CourseCenterId });
-            //modelBuilder.Entity<StudentCourse>()
+            //modelBuilder.Entity<StudentCourseCenter>()
             //    .HasOne(t => t.Student)
             //    .WithMany(t => t.StudentCourseCenters)
             //    .HasForeignKey(t => t.StudentId);
-            //modelBuilder.Entity<StudentCourse>()
-            //    .HasOne(t => t.Course)
+            //modelBuilder.Entity<StudentCourseCenter>()
+            //    .HasOne(t => t.CourseCenter)
             //    .WithMany(t => t.StudentCourseCenters)
             //    .HasForeignKey(t => t.CourseCenterId);
+
+
+
+
+
+
+
 
         }
 
