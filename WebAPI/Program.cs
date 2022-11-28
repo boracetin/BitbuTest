@@ -5,15 +5,21 @@ using DataAccess.EfCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddSingleton<ICourseService, CourseManager>();
+builder.Services.AddScoped<ICourseService, CourseManager>();
 
 builder.Services.AddScoped<ICourseCenterService,CourseCenterManager>();
 
 builder.Services.AddScoped<IStudentService, StudentManager>();
 
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ICourseCenterRepository, CourseCenterRepository>();
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+
+
+//builder.Services.AddScoped<ICourseCenterRepository, CourseCenterRepository>();
 
 
 // Add services to the container.
@@ -39,3 +45,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void NewMethod(WebApplicationBuilder builder)
+{
+    builder.Services.AddScoped<IStudentService, StudentManager>();
+}
